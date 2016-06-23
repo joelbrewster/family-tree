@@ -12,16 +12,20 @@ mongoose.connect('mongodb://localhost/family-tree');
 
 
 //create a new user
-var david = new User({
-  first_name: "David",
-  email: 'david@cookies.com',
-  meta: {
-    age: 27
-  }
-});
+// var david = new User({
+//   first_name: "David",
+//   email: 'david@cookies.com',
+//   meta: {
+//     age: 27
+//   }
+// });
 
-david.save(function(err){
+// david.save(function(err){
+//   if(err) console.log(err);
+//   console.log("User created!");
+
+// });
+user.find({}, function(err, users){
   if(err) console.log(err);
-  console.log("User created!");
-
+  console.log(users);
 });
