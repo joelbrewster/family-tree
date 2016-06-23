@@ -1,7 +1,7 @@
 var express = require('express'),
 bodyparser = require('body-parser'),
 mongoose = require('mongoose'),
-app = express();
+app = express(),
 User = require('./models/user');
 
 
@@ -9,7 +9,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/family-tree');
-
+console.log('klhasdfkahsdflkjhasfd');
 
 //create a new user
 // var david = new User({
@@ -25,7 +25,19 @@ mongoose.connect('mongodb://localhost/family-tree');
 //   console.log("User created!");
 
 // });
-user.find({}, function(err, users){
+// User.findOne({email: 'david@cookies.com'}, function(err, user){
+//   if(err) console.log(err);
+//   console.log(user);
+// });
+
+
+// User.find({}, function(err, users){
+//   if(err) console.log(err);
+//   console.log(users);
+//   // console.dir(typeof users);
+// });
+
+user.findOneAndUpdate({email: 'david@cookies.com'}, { meta: { age: 37 }}, function(err, user){
   if(err) console.log(err);
-  console.log(users);
-});
+  console.log(user);
+})
