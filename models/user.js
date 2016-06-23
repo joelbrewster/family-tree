@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 
 //Defining the structure of our user collection
 var userSchema = new mongoose.Schema({
-  ifirst_name: String,
+  first_name: String,
   last_name: String,
-  email: {type: String, requiredL true, unuque: true },
+  email: {type: String, required: true, unique: true },
   meta: {
-    age; Number,
+    age: Number,
     website: String,
     address: String,
     country: String
@@ -24,4 +24,4 @@ userSchema.methods.sayHello = function(){
 //registering our schema with mongoose / mongo
 var User = mongoose.model('User', userSchema);
 
-module.exports = User
+module.exports = User;

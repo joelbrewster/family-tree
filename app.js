@@ -13,8 +13,10 @@ mongoose.connect('mongodb://localhost/family-tree');
 
 //create a new user
 var david = new User({
-  first_name = "David",
+  first_name: "David",
   meta: {
     age: 27
   }
 });
+
+david.sayHello();
