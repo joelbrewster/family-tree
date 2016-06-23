@@ -5,11 +5,11 @@ app = express(),
 User = require('./models/user');
 
 
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/family-tree');
-console.log('klhasdfkahsdflkjhasfd');
 
 //create a new user
 // var david = new User({
@@ -30,18 +30,45 @@ console.log('klhasdfkahsdflkjhasfd');
 //   // console.dir(typeof users);
 // });
 
-});
-User.findOne({email: 'david@cookies.com'}, function(err, user){
-  if(err) console.log(err);
-  console.log(user);
+// User.findOne({email: 'david@cookies.com'}, function(err, user){
+//   if(err) console.log(err);
+//   console.log(user);
+// });
+
+// User.findOneAndUpdate({ email: 'david@cookies.com'}, { meta: { age: 37 }}, function(err, user){
+//   if(err) console.log(err);
+//   console.log(user);
+// });
+
+// User.findOneAndremove({ email: 'david@cookies.com'}, function(err){
+//   if(err) console.log(err);
+//   console.log("User deleted.");
+// });
+
+
+// ===============
+
+
+app.get('/all', function(req, res){
+  User.find({}, function(err, users){
+    res.json(users);
+  });
 });
 
-user.findOneAndUpdate({ email: 'david@cookies.com'}, { meta: { age: 37 }}, function(err, user){
-  if(err) console.log(err);
-  console.log(user);
+app.get('/create', function(req, res){
+  var user = new User(req.query);
+  user.save(function(err, yser){
+    if(err) console.log(err);
+    res.json(users);
+  });
 });
 
-user.findOneAndremove({ email: 'david@cookies.com'}, function(err){
-  if(err) console.log(err);
-  console.log("User deleted.");
+app.get('/delete/:id',function(req, res){
+  res.send(req.params);
+  User.findoneAndRemove({'_id' : req.params.id}, function(err){
+    if(err) console.log(err);
+    res.send(err);
+  });
 });
+
+app.listen(3000);
