@@ -24,20 +24,24 @@ console.log('klhasdfkahsdflkjhasfd');
 //   if(err) console.log(err);
 //   console.log("User created!");
 
-// });
-// User.findOne({email: 'david@cookies.com'}, function(err, user){
-//   if(err) console.log(err);
-//   console.log(user);
-// });
-
-
 // User.find({}, function(err, users){
 //   if(err) console.log(err);
 //   console.log(users);
 //   // console.dir(typeof users);
 // });
 
-user.findOneAndUpdate({email: 'david@cookies.com'}, { meta: { age: 37 }}, function(err, user){
+});
+User.findOne({email: 'david@cookies.com'}, function(err, user){
   if(err) console.log(err);
   console.log(user);
-})
+});
+
+user.findOneAndUpdate({ email: 'david@cookies.com'}, { meta: { age: 37 }}, function(err, user){
+  if(err) console.log(err);
+  console.log(user);
+});
+
+user.findOneAndremove({ email: 'david@cookies.com'}, function(err){
+  if(err) console.log(err);
+  console.log("User deleted.");
+});
