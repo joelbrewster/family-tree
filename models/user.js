@@ -15,6 +15,11 @@ var userSchema = new mongoose.Schema({
   updated_at: Date
 
 });
+//Define a custom method for the user model.
+
+userSchema.methods.sayHello = function(){
+  console.log('Hi ' + this.first_name);
+}
 
 //registering our schema with mongoose / mongo
 var User = mongoose.model('User', userSchema);

@@ -10,3 +10,11 @@ app.use(bodyparser.urlencoded({extended: true}));
 
 mongoose.connect('mongodb://localhost/family-tree');
 
+
+//create a new user
+var david = new User({
+  first_name = "David",
+  meta: {
+    age: 27
+  }
+});
